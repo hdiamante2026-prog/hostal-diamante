@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 
-
+// all ok
 const dataRoutes = [
 	{
 		route: '/dashboard',
