@@ -37,17 +37,17 @@ export async function GET(){
       id:{notIn: adminIds}
     }})
 
-    const users = await Promise.all( // Para seeds de mas de 20, se debe usar un bucle for
-      seedUsers.map( ({lastName,...user}) => auth.api.createUser({
-        body:{
-          ...user,
-          role: 'user',
-          data:{
-            lastName
-          }
-        }
-      }))
-    )
+    // const users = await Promise.all( // Para seeds de mas de 20, se debe usar un bucle for
+    //   seedUsers.map( ({lastName,...user}) => auth.api.createUser({
+    //     body:{
+    //       ...user,
+    //       role: 'user',
+    //       data:{
+    //         lastName
+    //       }
+    //     }
+    //   }))
+    // )
    
     // Rooms Creation
     await prisma.room.createMany({ data: seedRooms })
@@ -59,10 +59,10 @@ export async function GET(){
     await prisma.country.createMany({ data: seedCountries })
 
     // Clients Creation
-    await prisma.client.createMany({ data: seedClients })
+    // await prisma.client.createMany({ data: seedClients })
 
     // Companies Creation
-    await prisma.clientCompany.createMany({ data: seedCompanies })
+    // await prisma.clientCompany.createMany({ data: seedCompanies })
 
     // Pays Creation
     // await prisma.pay.createMany({ 
