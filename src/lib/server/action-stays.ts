@@ -9,6 +9,7 @@ import { tagCacheFloors, tagCacheReservations, tagCacheRooms, tagCacheStays } fr
 import { SAaddChassisCompany } from "./action-companies"
 import { seedOrigins, transformDate } from "../shared"
 import { AnsCap4Type } from "../index.interface"
+import { success } from "zod"
 
 
 
@@ -307,6 +308,8 @@ export const SAgetMinceturData = async (month:number,year:number) => {
       }
     })
 
+    if(stays.length === 0) return {success:false}
+    
     const ixRoomCap2 = {
     'Personal': 0,
     'Doble': 1,

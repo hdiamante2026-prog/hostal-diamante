@@ -42,7 +42,7 @@ export const LoginForm = () => {
       onSuccess: _ => {
         setErrorsMessage('')
         setLoginData(initialLoginData)
-        router.replace('/dashboard/stays/reservations')
+        router.replace('/dashboard/stays/register')
       },onRequest: _ => {
         setErrorsMessage('Ingresando....')
       }
