@@ -34,7 +34,7 @@ export const LoginForm = () => {
     await authClient.signIn.email({
       email: result.data.email,
       password: result.data.password,
-      callbackURL: '/dashboard/stays/reservations'
+      callbackURL: '/dashboard/stays/register'
     },{
       onError: _ => {
         setErrorsMessage('Credenciales Incorrectas o Usuario baneado')
@@ -42,7 +42,7 @@ export const LoginForm = () => {
       onSuccess: _ => {
         setErrorsMessage('')
         setLoginData(initialLoginData)
-        router.replace('/dashboard/stays/register')
+        // router.replace('/dashboard/stays/register')
       },onRequest: _ => {
         setErrorsMessage('Ingresando....')
       }
