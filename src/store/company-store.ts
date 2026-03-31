@@ -2,7 +2,7 @@ import { ClientCompany } from "@/generated/prisma/browser";
 import { CompanyObjectdata } from "@/lib/index.interface";
 import { create } from "zustand";
 
-const baseCurrnetCompany = {name:'',chassisList:[],dayPrice:0,id:0}
+const baseCurrnetCompany = {name:'',chassisList:[],dayPrice:0,id:0,fileUrl:''}
 
 interface State{
   currentId: number

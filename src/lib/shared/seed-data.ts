@@ -277,7 +277,7 @@ export const seedCities = [
   { name: "Leticia", countryId: "CO" }
 ];
 
-export const seedClients: Omit<Client, 'id'>[] = [
+export const seedClients: Omit<Client, 'id' | 'createdAt' >[] = [
   { typeDocument: "DNI", numberDocument: "71799919", firstName: "carlos", lastName: "condori", countryId: "PE", stars: 4.5, totalStays: 2, lastStay: new Date("2026-01-10"), address: "Psj Federico Barreto 370", phone: "936664619", comments: "", born: new Date("1995-10-26"), banned: true, banReason: "Se meo en la cama y la almohada" },
   { typeDocument: "DNI", numberDocument: "60708011", firstName: "mateo", lastName: "quispe", countryId: "PE", stars: 4.5, totalStays: 2, lastStay: new Date("2026-01-10"), address: "Calle Loreto 456", phone: "987654321", comments: "Viaja con sus padres", born: new Date("2012-05-20"), banned: false, banReason: null },
   { typeDocument: "DNI", numberDocument: "55443322", firstName: "valentina", lastName: "soto", countryId: "CL", stars: 0.0, totalStays: 1, lastStay: new Date("2025-11-15"), address: null, phone: null, comments: null, born: new Date("2015-08-12"), banned: false, banReason: null },
