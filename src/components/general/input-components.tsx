@@ -15,10 +15,11 @@ interface InputContainerProps {
   placeHolder?: string
   selectData?: string[] | number[]
   value?: string | number
+  list?: string
   onChange?: (e:ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
 }
 
-export const InputApp = ({Icon,className,label,inputId,placeHolder,type,selectData,name,value,onChange}:InputContainerProps) => {
+export const InputApp = ({Icon,className,label,inputId,placeHolder,type,selectData,name,value,list,onChange}:InputContainerProps) => {
   const [hiddePassword, setHiddePassword] = useState(false);
 
   
@@ -52,6 +53,7 @@ export const InputApp = ({Icon,className,label,inputId,placeHolder,type,selectDa
                 placeholder={placeHolder} 
                 name={name}
                 value={value}
+                list={list}
                 onChange={onChange}
                 className='outline-0 text-sm w-full md:text-base ' />
 

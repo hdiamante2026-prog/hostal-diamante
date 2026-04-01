@@ -14,49 +14,49 @@ export async function GET(){
 
     const adminIds = (process.env.ADMIN_IDS || '').split(',')
 
-    await prisma.roomInReservation.deleteMany()
-    await prisma.pay.deleteMany()
-    await prisma.roomActive.deleteMany()
-    await prisma.room.deleteMany()
-    await prisma.client.deleteMany()
-    await prisma.country.deleteMany()
-    await prisma.dayComment.deleteMany()
-    await prisma.reservation.deleteMany()
-    await prisma.clientCompany.deleteMany()
+    // await prisma.roomInReservation.deleteMany()
+    // await prisma.pay.deleteMany()
+    // await prisma.roomActive.deleteMany()
+    // await prisma.room.deleteMany()
+    // await prisma.client.deleteMany()
+    // await prisma.country.deleteMany()
+    // await prisma.dayComment.deleteMany()
+    // await prisma.reservation.deleteMany()
+    // await prisma.clientCompany.deleteMany()
 
-    // ! Users Creation 
+    // // ! Users Creation 
     
-    // Delete all users that not listed in .env file 
-    await prisma.account.deleteMany({ where:{
-      userId:{notIn: adminIds}
-    }})
-    await prisma.session.deleteMany({ where:{
-      userId:{notIn: adminIds}
-    }})
-    await prisma.user.deleteMany({ where:{
-      id:{notIn: adminIds}
-    }})
+    // // Delete all users that not listed in .env file 
+    // await prisma.account.deleteMany({ where:{
+    //   userId:{notIn: adminIds}
+    // }})
+    // await prisma.session.deleteMany({ where:{
+    //   userId:{notIn: adminIds}
+    // }})
+    // await prisma.user.deleteMany({ where:{
+    //   id:{notIn: adminIds}
+    // }})
 
-    // const users = await Promise.all( // Para seeds de mas de 20, se debe usar un bucle for
-    //   seedUsers.map( ({lastName,...user}) => auth.api.createUser({
-    //     body:{
-    //       ...user,
-    //       role: 'user',
-    //       data:{
-    //         lastName
-    //       }
-    //     }
-    //   }))
-    // )
+    // // const users = await Promise.all( // Para seeds de mas de 20, se debe usar un bucle for
+    // //   seedUsers.map( ({lastName,...user}) => auth.api.createUser({
+    // //     body:{
+    // //       ...user,
+    // //       role: 'user',
+    // //       data:{
+    // //         lastName
+    // //       }
+    // //     }
+    // //   }))
+    // // )
    
-    // Rooms Creation
-    await prisma.room.createMany({ data: seedRooms })
+    // // Rooms Creation
+    // await prisma.room.createMany({ data: seedRooms })
 
-    // Actives Creation
-    // await prisma.roomActive.createMany({ data: seedRoomActives })
+    // // Actives Creation
+    // // await prisma.roomActive.createMany({ data: seedRoomActives })
 
-    // Country Creation
-    await prisma.country.createMany({ data: seedCountries })
+    // // Country Creation
+    // await prisma.country.createMany({ data: seedCountries })
 
     // Clients Creation
     // await prisma.client.createMany({ data: seedClients })

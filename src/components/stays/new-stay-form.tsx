@@ -9,7 +9,7 @@ import { filterString, oneSpace, onlyString, noSpace, onlyNumber, closeDialog } 
 import { dialogClient } from '../clients'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { SAcreateStay, SAgetClientByDocument } from '@/lib/server'
-import { replaceSpace, replaceSubLine, transformDate } from '@/lib/shared'
+import { getAge, replaceSpace, replaceSubLine, seedOrigins, transformDate } from '@/lib/shared'
 import { RoomStayFormData } from '@/lib/index.interface'
 import { ClientCompany } from '@/generated/prisma/client'
 
@@ -19,7 +19,7 @@ const initialData = (price:number|null) => ({
   dateStart: transformDate(new Date()).join('T'),
   city: 'Tacna',
   price,
-  reason: 'Turismo',
+  reason: 'Visita',
   carPlate: '',
   typeDocument: 'DNI',
   numberDocument: '',
@@ -161,7 +161,7 @@ export const NewStayForm = ({rooms,companies}:Props) => {
     if( clientList.some( el => el.id === client.id) ) return stSetStaticMsg('El cliente ya esta en la lista')
       
     const flag = client.country.flag
-    const age = new Date().getFullYear() - client.born.getFullYear()
+    const age = getAge(client.born)
     setclientList(prev => [...prev, {...client,typeDocument, numberDocument,flag,age}])
   }
   
@@ -179,6 +179,10 @@ export const NewStayForm = ({rooms,companies}:Props) => {
     if(!price) return stSetLoadingMsg('Ingresa el costo diario');
 
     if(clientList.length === 0) return stSetStaticMsg('No hay clientes para su registro');
+
+    const newChasisList = Object.values(clientChassis).filter(el => el)
+
+    if( clientList.length !== newChasisList.length) return stSetStaticMsg('Todos los conductores deben tener un chasis asignado');
 
     if(isSaving) return
     
@@ -203,6 +207,8 @@ export const NewStayForm = ({rooms,companies}:Props) => {
       }
     }
 
+
+
     const clientsChassisList = Object.values(clientChassis).filter( el => !chassisList?.includes(el))
 
     setSavingST(true)
@@ -216,6 +222,8 @@ export const NewStayForm = ({rooms,companies}:Props) => {
     }
   }
 
+  console.log(clientChassis)
+  
   const chassisHandleChange = (e:ChangeEvent<HTMLInputElement>) => {
 
     if(!isStayClientCompany) return
@@ -280,9 +288,15 @@ export const NewStayForm = ({rooms,companies}:Props) => {
               className='col-span-2'
               type="text"
               name='city'
+              list='seed-origin'
               value={stayData.city}
               onChange={handleChange}
             />
+
+            <datalist id='seed-origin'>
+              {Object.keys(seedOrigins).map( el => <option key={'data-origin-list'+el} value={el}>{el}</option>)}
+            </datalist>
+            
             <InputApp
               Icon={FaMountainSun }
               inputId="stay_reason"
