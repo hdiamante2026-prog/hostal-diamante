@@ -3,7 +3,6 @@
 import { cacheLife, cacheTag, updateTag } from "next/cache"
 import { prisma } from "../prisma"
 import { getUserInfo } from "./action-auth"
-import { Reservation } from "@/generated/prisma/client"
 import { consoleError } from "./helpers"
 import { tagCacheFloors, tagCacheReservations, tagCacheRooms } from "."
 import { ReservationDataInterface } from "../index.interface"

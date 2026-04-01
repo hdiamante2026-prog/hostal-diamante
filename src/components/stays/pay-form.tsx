@@ -129,7 +129,7 @@ export const PayForm = ({ currentData }:Props) => {
             />
             <InputApp
               Icon={FaCoins}
-              label="Monto *"
+              label="Monto Total*"
               inputId="pay-register-cash"
               type="text"
               placeHolder="s/ 50"

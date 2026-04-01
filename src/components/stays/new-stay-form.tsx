@@ -182,7 +182,8 @@ export const NewStayForm = ({rooms,companies}:Props) => {
 
     const newChasisList = Object.values(clientChassis).filter(el => el)
 
-    if( clientList.length !== newChasisList.length) return stSetStaticMsg('Todos los conductores deben tener un chasis asignado');
+    if( isStayClientCompany && (clientList.length !== newChasisList.length ))
+       return stSetStaticMsg('Todos los conductores deben tener un chasis asignado');
 
     if(isSaving) return
     
@@ -230,7 +231,7 @@ export const NewStayForm = ({rooms,companies}:Props) => {
     
     const {name,value} = e.target
 
-    const clientId = name.split('_')[1]
+  const clientId = name.split('_')[1]
 
     setClientChassis(prev => ({...prev,[clientId]:value}))
   }
@@ -367,9 +368,9 @@ export const NewStayForm = ({rooms,companies}:Props) => {
                 key={'posible-client-stay'+client.id}
                 className='w-full flex items-center font-bold capitalize px-2 py-1'
               >
-                <p className='w-1/5 uppercase'> {client.typeDocument.slice(0,3)} {client.numberDocument} </p>
-                <p className='w-auto'>{client.flag} {client.firstName} {client.lastName} {client.age < 18 && '👶'}</p>
-                <p className='ml-auto text-right text-nowrap'>{client.age} años</p>
+                <p className='w-1/4 uppercase'> {client.typeDocument.slice(0,3)} {client.numberDocument} </p>
+                <p className='w-auto mr-auto'>{client.flag} {client.firstName} {client.lastName} {client.age < 18 && '👶'}</p>
+                {/* <p className='ml-auto text-right text-nowrap'>{client.age} años</p> */}
 
                 { isStayClientCompany && 
                   <input 
@@ -379,7 +380,7 @@ export const NewStayForm = ({rooms,companies}:Props) => {
                     list='chassis-list' 
                     type='text' 
                     placeholder='-chassis-'
-                    className='border border-gray-01 ml-2 w-1/5 rounded text-center'
+                    className='border border-white-04 ml-2 w-1/5 rounded text-center'
                   /> 
                 }
                 
@@ -387,7 +388,7 @@ export const NewStayForm = ({rooms,companies}:Props) => {
                   className='ml-2 uppercase px-3 py-1 bg-orange-1 text-white rounded-lg'
                   onClick={() => deleteFromList(client.id)}
                 >
-                  Remover
+                  🗑
                 </button>
               </div>
             ))}

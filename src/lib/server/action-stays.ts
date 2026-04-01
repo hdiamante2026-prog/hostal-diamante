@@ -93,7 +93,7 @@ export const SAcreateStay = async ( data:CreateStay, newChassis: string[] ) => {
 
       if(!room) throw new Error('La habitacion no existe')
 
-      if(room.status === 'busy') throw new Error('La habitacion se encuentra ocupada')
+      if(!room.active || room.status === 'busy') throw new Error('No puedes seleccionar esta habitacion')
 
       await tx.room.update({
         where:{number:roomId},
@@ -186,9 +186,9 @@ export const SAcloseStay = async (data:CloseStayInterface) => {
     if(!API_GOOGLE_FOLDERS) throw new Error('Faltan los datos de la carpeta api')
 
     await prisma.$transaction( async tx => {
-
-      const dataFetch:TypeFetchGoogleFolder = await (await fetch(API_GOOGLE_FOLDERS+stayId,{
-        next: {revalidate: 3600}})).json();
+      console.log(stayId)
+      
+      const dataFetch:TypeFetchGoogleFolder = await (await fetch(API_GOOGLE_FOLDERS+stayId)).json();
         
       const {success, ans} = dataFetch
       if(!success) throw new Error('No se pudo generar la carpeta de imagenes');

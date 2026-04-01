@@ -9,10 +9,10 @@ export async function GET(){
 
   try{
 
-    if( process.env.NODE_ENV === 'production')
-      return NextResponse.json({message: 'Ups! This cant works in production' }, {status:400});
+    // if( process.env.NODE_ENV === 'production')
+    //   return NextResponse.json({message: 'Ups! This cant works in production' }, {status:400});
 
-    const adminIds = (process.env.ADMIN_IDS || '').split(',')
+    // const adminIds = (process.env.ADMIN_IDS || '').split(',')
 
     // await prisma.roomInReservation.deleteMany()
     // await prisma.pay.deleteMany()

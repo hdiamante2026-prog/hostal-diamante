@@ -28,7 +28,7 @@ export const DetailStay = ({
       </div>
     
       <CenterDialog id={dialogId}>
-        <DialogContent maxWRem={35}>
+        <DialogContent maxWRem={40}>
 
           <DialogHeader
             Icon={FaBed}
