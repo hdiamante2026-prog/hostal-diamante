@@ -17,7 +17,7 @@ export const Cap5Mincetur = ({data,totals}:Data) => {
     <div className='col-span-12'>
       
       <p className='text-xl font-bold text-gray-04 uppercase '> 
-        Capitulo II: <span className='text-lg text-gray-03 capitalize'>Capacidad de alojamiento</span>  
+        Capitulo V: <span className='text-lg text-gray-03 capitalize'>Capacidad de alojamiento</span>  
       </p>
 
       <TableApp>
