@@ -43,7 +43,7 @@ export const StayRegisterContent = ({ rooms, clientCompanies }:Props) => {
     </div>
   )
   
-  if(!currentData || !currentData.dateStart || !currentData.dateStart) 
+  if(!currentData || !currentData.dateStart) 
     return <NewStayForm rooms={rooms} companies={clientCompanies}/>
   
   const {carPlate,clientInStay,dateStart,origin,reason,id,pays,clientCompany:company,comments} = currentData
