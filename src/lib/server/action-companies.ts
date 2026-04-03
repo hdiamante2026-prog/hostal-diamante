@@ -33,7 +33,6 @@ import { consoleError } from "./helpers"
           const paramToken      = `token=${encodeURIComponent(REPORT_TOKEN||'')}`
           const paramClientId   = `clientId=${id}`
           const paramClientName = `clientName=${inName}`
-          console.log(paramToken)
 
           const url = `${API_GOOGLE_CREATE_FILE}?${paramToken}&${paramClientId}&${paramClientName}`
             

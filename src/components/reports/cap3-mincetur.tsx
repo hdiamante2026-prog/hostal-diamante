@@ -11,8 +11,6 @@ interface Data {
 
 export const Cap3Mincetur = ({data,totals}:Data) => {
 
-  console.log(data)
-
   return (
     <div className='col-span-7'>
 

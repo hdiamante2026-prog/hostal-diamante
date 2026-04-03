@@ -180,11 +180,6 @@ export const NewStayForm = ({rooms,companies}:Props) => {
 
     if(clientList.length === 0) return stSetStaticMsg('No hay clientes para su registro');
 
-    const newChasisList = Object.values(clientChassis).filter(el => el)
-
-    if( isStayClientCompany && (clientList.length !== newChasisList.length ))
-       return stSetStaticMsg('Todos los conductores deben tener un chasis asignado');
-
     if(isSaving) return
     
     stSetLoadingMsg('Guardando')
@@ -210,7 +205,7 @@ export const NewStayForm = ({rooms,companies}:Props) => {
 
 
 
-    const clientsChassisList = Object.values(clientChassis).filter( el => !chassisList?.includes(el))
+    const clientsChassisList = Object.values(clientChassis).filter( el => el && !chassisList?.includes(el))
 
     setSavingST(true)
     const {success,message} = await SAcreateStay(data,clientsChassisList)
@@ -223,15 +218,13 @@ export const NewStayForm = ({rooms,companies}:Props) => {
     }
   }
 
-  console.log(clientChassis)
-  
   const chassisHandleChange = (e:ChangeEvent<HTMLInputElement>) => {
 
     if(!isStayClientCompany) return
     
     const {name,value} = e.target
 
-  const clientId = name.split('_')[1]
+    const clientId = name.split('_')[1]
 
     setClientChassis(prev => ({...prev,[clientId]:value}))
   }

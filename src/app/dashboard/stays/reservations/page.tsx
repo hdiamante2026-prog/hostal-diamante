@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 
 export default async function ReservationsPage() {
 
-  // redirect('/dashboard/stays/register')
+  redirect('/dashboard/stays/register')
 
   const reservations = await getCacheActiveReservations()
   const rooms = await SAgetFilteredRooms()

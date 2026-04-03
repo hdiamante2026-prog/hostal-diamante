@@ -5,10 +5,10 @@ import { FaHouse } from 'react-icons/fa6'
 import { CenterDialog, DialogContent, DialogFooterSave, DialogHeader, HeaderButton, InputApp } from '../general'
 import { TypeDocuments } from '@/generated/prisma/enums'
 import { Country } from '@/generated/prisma/client'
-import { closeDialog, filterString, openDialog, noSpace, oneSpace, onlyNumber, onlyString } from '@/lib/client'
+import { closeDialog, filterString, noSpace, oneSpace, onlyNumber, onlyString } from '@/lib/client'
 import { ChangeEvent, useState } from 'react'
 import { SAcreateClient } from '@/lib/server'
-import { dialogCountry, NewCountryForm } from './new-country-form'
+import { NewCountryForm } from './new-country-form'
 import { useLoadingStore, useMessageStore } from '@/store'
 import { replaceSpace, replaceSubLine, transformDate } from '@/lib/shared'
 
@@ -20,7 +20,7 @@ const initialData = {
   numberDocument: '',
   phone: '',
   country: "PE  🇵🇪  Peru",
-  born: transformDate(new Date(),0)[0],
+  born: '',
   address: ''
 }
 
@@ -98,8 +98,6 @@ export const NewClientForm = ({countries,showButton=true,cancelDialog}:Props) =>
   const handleClick = async () => {
     const {born,country,firstName,lastName,typeDocument,numberDocument,phone,address} = newClientData
 
-    console.log(typeDocument)
-    
     const newFirstName = firstName.trim()
     const newLastName = lastName.trim()
     const newAddress = address.trim()

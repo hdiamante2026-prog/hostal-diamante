@@ -186,7 +186,6 @@ export const SAcloseStay = async (data:CloseStayInterface) => {
     if(!API_GOOGLE_FOLDERS) throw new Error('Faltan los datos de la carpeta api')
 
     await prisma.$transaction( async tx => {
-      console.log(stayId)
       
       const dataFetch:TypeFetchGoogleFolder = await (await fetch(API_GOOGLE_FOLDERS+stayId)).json();
         
