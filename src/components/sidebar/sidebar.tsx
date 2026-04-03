@@ -14,7 +14,7 @@ export const baseSideBarItems= [
     Icon: FaBed , 
     options:[
       {name:'Registro',href:'/dashboard/stays/register'},
-     {name:'Reservaciones',href:'/dashboard/stays/reservations'},
+ //    {name:'Reservaciones',href:'/dashboard/stays/reservations'},
       {name:'Historial',href:'/dashboard/stays'},
     ]
   },
